@@ -1,0 +1,11 @@
+{
+  "name": "katas",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ebylund/katas.git",
+  "author": "Erik Bylund <ebylundini@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "kata": "./scripts/ts-repo.sh"
+  }
+}

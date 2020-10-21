@@ -1,3 +1,4 @@
+#!/bin/zsh
 CURR_DATE="$(date +'%Y-%m-%d')";
 NEW_DIR=$CURR_DATE-$1;
 mkdir $NEW_DIR;

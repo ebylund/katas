@@ -1,8 +1,9 @@
 #!/bin/zsh
 CURR_DATE="$(date +'%Y-%m-%d')";
 NEW_DIR=$CURR_DATE-$1;
-mkdir $NEW_DIR;
-cd $NEW_DIR;
+FULL_PATH=src/typescript/$NEW_DIR
+mkdir $FULL_PATH;
+cd $FULL_PATH;
 
 mkdir src;
 mkdir src/test;
@@ -23,7 +24,7 @@ describe('Describe', () => {
 echo $MAIN_FUNC > src/index.ts;
 echo $MAIN_TEST > src/test/index.test.ts;
 
-cp ../scripts/static/tsconfig.json .;
+cp ../../../scripts/static/tsconfig.json .;
 
 echo '
 {
@@ -32,13 +33,14 @@ echo '
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "ts-mocha src/**/*.test.ts --exit"
+    "test": "ts-mocha src/**/*.test.ts --exit",
+    "start:dev": "nodemon --watch \"src/**\" --ext \"ts,json\" --ignore \"src/**/*.test.ts\" --exec \"ts-node src/index.ts\""
   }
 }
 ' > package.json
 
 yarn add dotenv;
 yarn add -D typescript ts-node mocha chai ts-mocha nodemon @types/mocha @types/chai @types/node;
-yarn test;
 
-echo "added kata: ./$NEW_DIR";
+echo "added kata: ./$FULL_PATH";
+
